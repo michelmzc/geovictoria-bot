@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 
 # cargar variables de entorno .env
 load_dotenv()
@@ -15,12 +16,14 @@ email = os.getenv("GEO_EMAIL")
 password = os.getenv("GEO_PASS")
 
 options = Options()
-options.binary_location = "/usr/bin/google-chrome"
-options.add_argument("--headless") # descomentar para no ver ventana
+options.binary_location = "/usr/bin/chromium-browser"
+options.add_argument("--headless=new") # descomentar para no ver ventana
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-gpu")
+options.add_argument("--remote-debugging-port=9222")
 
-service = Service("/usr/local/bin/chromedriver/chromedriver")
+service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service,options=options)
 
 try:
@@ -33,6 +36,7 @@ try:
 
 	print("Login enviado, esperando carga ...")
 	time.sleep(5)
+	print("Login éxitoso")
 	"""
 	try: 
 
