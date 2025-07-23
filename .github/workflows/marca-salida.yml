@@ -1,11 +1,10 @@
 name: Marca salida GeoVictoria
 
 on:
-  # Ejecutar manualmente desde GitHub UI
-  workflow_dispatch:
-
   schedule:
     - cron: '15 22 * * 1-4'  # Lunes a jueves a las 18:15 CLT (UTC-4)
+  # Ejecutar manualmente desde GitHub UI
+  workflow_dispatch:
 jobs:
   test-login:
     runs-on: ubuntu-latest
