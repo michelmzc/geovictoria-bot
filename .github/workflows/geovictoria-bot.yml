@@ -25,7 +25,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y chromium-browser chromium-chromedriver 
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -33,6 +33,6 @@ jobs:
 
     - name: Run Geovictoria bot
       env:
-        USER_EMAIL: ${{ secrets.GEO_EMAIL }}
-        USER_PASS: ${{ secrets.GEO_PASS }}
+        GEO_EMAIL: ${{ secrets.GEO_EMAIL }}
+        GEO_PASS: ${{ secrets.GEO_PASS }}
       run: python bot.py
