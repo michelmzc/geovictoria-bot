@@ -40,7 +40,7 @@ try:
 	print("Login éxitoso")
 	try:
 		time.sleep(5)
-		delay = random.randint(0,30) # retraso aleatorio entre 0 a 300 segundos
+		delay = random.randint(0,10) # retraso aleatorio entre 0 a 300 segundos
 		print(f"Esperando {delay} segundos antes de iniciar ...")
 		time.sleep(delay)
 		mark_button = WebDriverWait(driver, 10).until(
