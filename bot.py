@@ -15,8 +15,11 @@ email = os.getenv("GEO_EMAIL")
 password = os.getenv("GEO_PASS")
 
 options = Options()
-# options.add_argument("--headless") # descomentar para no ver ventana
 options.binary_location = "/usr/bin/google-chrome"
+options.add_argument("--headless") # descomentar para no ver ventana
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+
 service = Service("/usr/local/bin/chromedriver/chromedriver")
 driver = webdriver.Chrome(service=service,options=options)
 
