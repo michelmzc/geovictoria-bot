@@ -30,17 +30,18 @@ try:
 
 	print("Login enviado, esperando carga ...")
 	time.sleep(5)
-	
+	"""
 	try: 
 
 		time.sleep(3)
 		mark_button = WebDriverWait(driver, 10).until(
-			EC.element_to_be_clickable((By.ID, "btnExitWebPunch"))
+			EC.element_to_be_clickable((By.ID, "btnExitWebPunch")) #btnEntryWebPunch
 		)
 		mark_button.click()
 		print("✅ Salida marcada correctamente")
 		time.sleep(3)
 	except Exception as e:
 		print("❌ No se pudo hacer clic en el botón:", e)
+	"""
 finally:
 	driver.quit()
