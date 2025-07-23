@@ -1,13 +1,11 @@
-name: Geovictoria Bot Test
+name: Marca salida GeoVictoria
 
 on:
   # Ejecutar manualmente desde GitHub UI
   workflow_dispatch:
 
-  # Para pruebas, puedes agregar un cron que corra cada día a las 9am UTC (ajusta horario)
-  #schedule:
-  #  - cron: '0 9 * * *'  
-
+  schedule:
+    - cron: '15 22 * * 1-4'  # Lunes a jueves a las 18:15 CLT (UTC-4)
 jobs:
   test-login:
     runs-on: ubuntu-latest
@@ -35,4 +33,4 @@ jobs:
       env:
         GEO_EMAIL: ${{ secrets.GEO_EMAIL }}
         GEO_PASS: ${{ secrets.GEO_PASS }}
-      run: python bot.py
+      run: python marca_salida.py

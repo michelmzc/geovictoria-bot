@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv 
+import random
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -37,10 +38,11 @@ try:
 	print("Login enviado, esperando carga ...")
 	time.sleep(5)
 	print("Login éxitoso")
-	"""
-	try: 
-
-		time.sleep(3)
+	try:
+		time.sleep(5)
+		delay = random.randint(0,300) # retraso aleatorio entre 0 a 300 segundos
+		print(f"Esperando {delay} segundos antes de iniciar ...")
+		time.sleep(delay)
 		mark_button = WebDriverWait(driver, 10).until(
 			EC.element_to_be_clickable((By.ID, "btnExitWebPunch")) #btnEntryWebPunch
 		)
@@ -49,6 +51,5 @@ try:
 		time.sleep(3)
 	except Exception as e:
 		print("❌ No se pudo hacer clic en el botón:", e)
-	"""
 finally:
 	driver.quit()
