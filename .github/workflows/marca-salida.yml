@@ -2,7 +2,7 @@ name: Marca salida GeoVictoria
 
 on:
   schedule:
-    - cron: '15 18 * * 1-4'  # Lunes a jueves a las 18:15 CLT (UTC-4)
+    - cron: '32 10 * * 1-4'  # Lunes a jueves a las 18:15 CLT (UTC-4)
     - cron: '25 18 * * 5'    # Viernes a las 14:30 hora Chile (17:30 UTC)
   # Ejecutar manualmente desde GitHub UI
   workflow_dispatch:
