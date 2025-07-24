@@ -44,18 +44,18 @@ try:
 	delay = random.randint(10, 30)
 
 	try: 
-		print(f"Esperando boton de salida {delay} segundos")
+		print(f"Esperando boton de entrada {delay} segundos")
 		mark_button = WebDriverWait(driver, delay).until(
 			EC.element_to_be_clickable((By.ID, "btnEntryWebPunch"))
 		)
 		
 		if mark_button.is_displayed():
 			mark_button.click()
-			print("✅ Salida marcada correctamente")		
+			print("✅ Entrada marcada correctamente")		
 		else:
 			print("❌ El botón está presente pero no es visible.")
 	except TimeoutException:
-		print("❌ No se encontró el botón de salida en el tiempo esperado.")
+		print("❌ No se encontró el botón de entrada en el tiempo esperado.")
 except Exception as e:
 	print("❌ No se pudo hacer clic en el botón:", e)
 	traceback.print_exc()
