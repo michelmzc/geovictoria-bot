@@ -38,10 +38,9 @@ try:
 	print("Login enviado, esperando carga ...")
 	time.sleep(5)
 	print("Login éxitoso")
-	"""
 	try:
 		time.sleep(5)
-		delay = random.randint(0,30) # retraso aleatorio entre 0 a 300 segundos
+		delay = random.randint(0, 30) # retraso aleatorio entre 0 a 30 segundos
 		print(f"Esperando {delay} segundos antes de iniciar ...")
 		time.sleep(delay)
 		mark_button = WebDriverWait(driver, 10).until(
@@ -52,6 +51,5 @@ try:
 		time.sleep(3)
 	except Exception as e:
 		print("❌ No se pudo hacer clic en el botón:", e)
-	"""
 finally:
 	driver.quit()
