@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv 
 import random
 import time
+import traceback
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -9,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 
 # cargar variables de entorno .env
@@ -38,18 +40,24 @@ try:
 	print("Login enviado, esperando carga ...")
 	time.sleep(5)
 	print("Login éxitoso")
-	try:
-		time.sleep(5)
-		delay = random.randint(0, 30) # retraso aleatorio entre 0 a 30 segundos
-		print(f"Esperando {delay} segundos antes de iniciar ...")
-		time.sleep(delay)
-		mark_button = WebDriverWait(driver, 10).until(
+
+	delay = random.randint(10, 30)
+
+	try: 
+		print(f"Esperando boton de salida {delay} segundos")
+		mark_button = WebDriverWait(driver, delay).until(
 			EC.element_to_be_clickable((By.ID, "btnEntryWebPunch"))
 		)
-		mark_button.click()
-		print("✅ Salida marcada correctamente")
-		time.sleep(3)
-	except Exception as e:
-		print("❌ No se pudo hacer clic en el botón:", e)
+		
+		if mark_button.is_displayed():
+			mark_button.click()
+			print("✅ Salida marcada correctamente")		
+		else:
+			print("❌ El botón está presente pero no es visible.")
+	except TimeoutException:
+		print("❌ No se encontró el botón de salida en el tiempo esperado.")
+except Exception as e:
+	print("❌ No se pudo hacer clic en el botón:", e)
+	traceback.print_exc()
 finally:
 	driver.quit()

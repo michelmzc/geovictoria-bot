@@ -7,12 +7,14 @@ on:
   # Ejecutar manualmente desde GitHub UI
   workflow_dispatch:
 jobs:
-  test-login:
+  run-bot:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        ref: main
 
     - name: Setup Python 3.12
       uses: actions/setup-python@v4
